@@ -37,6 +37,17 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal: 8,
   },
+  avatar: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    resizeMode: 'contain',
+  },
+  plainText: {
+    color: '#eaeaea',
+    fontSize: 24,
+    padding: 10,
+  },
 });
 
 export default styles;

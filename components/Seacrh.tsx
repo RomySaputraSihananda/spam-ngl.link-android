@@ -1,10 +1,15 @@
 import React from 'react';
-import {Button, Pressable, Text, TextInput, View} from 'react-native';
+import {Button, Image, Pressable, Text, TextInput, View} from 'react-native';
 import styles from '../styles/styles';
+import * as cheerio from 'cheerio';
 
 interface State {
   username: string;
-  status: number;
+  data: {
+    username: string;
+    avatar: string;
+  } | null;
+  notFound: boolean;
 }
 
 interface Props {}
@@ -14,7 +19,8 @@ class Search extends React.Component<Props, State> {
     super(props);
     this.state = {
       username: '',
-      status: 0,
+      data: null,
+      notFound: false,
     };
   }
 
@@ -24,15 +30,48 @@ class Search extends React.Component<Props, State> {
 
   handleSearch = () => {
     (async () => {
-      const {status} = await fetch(`https://ngl.link/${this.state.username}`);
-      this.setState({status});
+      const req = await fetch(`https://ngl.link/${this.state.username}`);
+
+      if (!(req.status === 404)) {
+        const html: string = await req.text();
+
+        const $ = cheerio.load(html);
+
+        const {username, avatar} = {
+          username: /var ig_username = "(.*?)"/.exec($('script').text()) || [],
+          avatar: /var ig_pfp_url = "(.*?)"/.exec($('script').text()) || [],
+        };
+
+        return this.setState({
+          data: {
+            username: username[1],
+            avatar: avatar[1],
+          },
+          notFound: false,
+        });
+      }
+
+      return this.setState({notFound: true});
     })();
   };
 
   render(): React.ReactNode {
     return (
       <View>
-        <Text>{this.state.status}</Text>
+        {this.state.notFound && (
+          <View style={{alignItems: 'center'}}>
+            <Text style={styles.plainText}>name not found</Text>
+          </View>
+        )}
+        {this.state.data && (
+          <View style={{alignItems: 'center'}}>
+            <Image
+              style={styles.avatar}
+              source={{uri: this.state.data.avatar}}
+            />
+            <Text style={styles.plainText}>{this.state.data.username}</Text>
+          </View>
+        )}
         <View style={styles.search}>
           <TextInput
             onChange={e => this.setUsername(e.nativeEvent.text)}
