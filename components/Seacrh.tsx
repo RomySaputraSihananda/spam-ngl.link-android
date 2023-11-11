@@ -51,27 +51,29 @@ class Search extends React.Component<Props, State> {
         });
       }
 
-      return this.setState({notFound: true});
+      return this.setState({data: null, notFound: true});
     })();
   };
 
   render(): React.ReactNode {
     return (
-      <View>
-        {this.state.notFound && (
-          <View style={{alignItems: 'center'}}>
-            <Text style={styles.plainText}>name not found</Text>
-          </View>
-        )}
-        {this.state.data && (
-          <View style={{alignItems: 'center'}}>
-            <Image
-              style={styles.avatar}
-              source={{uri: this.state.data.avatar}}
-            />
-            <Text style={styles.plainText}>{this.state.data.username}</Text>
-          </View>
-        )}
+      <View style={{height: '100%', width: '100%'}}>
+        <View style={styles.profile}>
+          {this.state.notFound && (
+            <View style={{alignItems: 'center'}}>
+              <Text style={styles.plainText}>name not found</Text>
+            </View>
+          )}
+          {this.state.data && (
+            <View style={{alignItems: 'center'}}>
+              <Image
+                style={styles.avatar}
+                source={{uri: this.state.data.avatar}}
+              />
+              <Text style={styles.plainText}>{this.state.data.username}</Text>
+            </View>
+          )}
+        </View>
         <View style={styles.search}>
           <TextInput
             onChange={e => this.setUsername(e.nativeEvent.text)}

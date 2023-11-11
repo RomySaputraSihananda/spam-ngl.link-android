@@ -2,12 +2,12 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   body: {
-    display: 'flex',
+    // display: 'flex',
     backgroundColor: '#333',
     height: '100%',
     width: '100%',
     fontFamily: 'Quote',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     padding: 10,
   },
   button: {
@@ -47,6 +47,10 @@ const styles = StyleSheet.create({
     color: '#eaeaea',
     fontSize: 24,
     padding: 10,
+  },
+  profile: {
+    height: '50%',
+    width: '100%',
   },
 });
 
