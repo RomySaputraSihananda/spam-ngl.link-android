@@ -3,7 +3,8 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    backgroundColor: '#333',
+    // backgroundColor: '#333',
+    backgroundColor: '#1F2A3E',
     padding: 10,
   },
   buttonSearch: {
