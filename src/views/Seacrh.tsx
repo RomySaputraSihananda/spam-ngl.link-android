@@ -64,20 +64,24 @@ class Search extends React.Component<Props, State> {
               <Text style={styles.plainText}>name not found</Text>
             </View>
           )}
-          {this.state.data && (
-            <View style={{alignItems: 'center'}}>
-              <Image
-                style={styles.avatar}
-                source={{uri: this.state.data.avatar}}
-              />
-              <Text style={styles.plainText}>{this.state.data.username}</Text>
-            </View>
-          )}
+          {/* {this.state.data && ( */}
+          <View style={{alignItems: 'center'}}>
+            <Image
+              style={styles.avatar}
+              // source={{uri: this.state.data.avatar}}
+              source={{
+                uri: 'https://firebasestorage.googleapis.com/v0/b/ask-fun-d10f0.appspot.com/o/images%2F3hbs59j5pEZCmENcMw4Fe3GDKuf2.jpg?alt=media&token=a5f0e868-cb30-48d9-b2a5-1739bf7559d0',
+              }}
+            />
+            <Text style={styles.plainText}>{'jksdh'}</Text>
+          </View>
+          {/* )} */}
         </View>
         <View style={styles.search}>
           <TextInput
             onChange={e => this.setUsername(e.nativeEvent.text)}
             style={styles.input}
+            placeholder="username instagram"
           />
           <Pressable onPress={this.handleSearch} style={styles.button}>
             <Text style={styles.textButton}>Search</Text>

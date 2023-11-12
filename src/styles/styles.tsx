@@ -4,13 +4,12 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     backgroundColor: '#333',
-    fontFamily: 'Quote',
     padding: 10,
   },
   button: {
     backgroundColor: '#eaeaea',
-    alignSelf: 'center',
-    borderRadius: 3,
+    justifyContent: 'center',
+    borderRadius: 5,
     height: '100%',
   },
   textButton: {
@@ -21,12 +20,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Quote',
   },
   search: {
-    display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    height: 50,
-    paddingVertical: 8,
-    paddingHorizontal: 8,
+    height: 34,
+    marginVertical: 8,
+    marginHorizontal: 8,
+    backgroundColor: '#eaeaea',
+    borderRadius: 5,
   },
   input: {
     backgroundColor: '#eaeaea',
@@ -34,10 +33,11 @@ const styles = StyleSheet.create({
     padding: 0,
     flex: 1,
     marginRight: 10,
-    borderRadius: 3,
+    borderRadius: 5,
     paddingVertical: 4,
-    paddingHorizontal: 8,
+    paddingHorizontal: 10,
     height: '100%',
+    fontFamily: 'Quote',
   },
   avatar: {
     width: 200,
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     color: '#eaeaea',
     fontSize: 24,
     padding: 10,
+    fontFamily: 'Quote',
   },
   profile: {
     flex: 1,
