@@ -6,17 +6,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#333',
     padding: 10,
   },
-  button: {
-    backgroundColor: '#eaeaea',
+  buttonSearch: {
     justifyContent: 'center',
     borderRadius: 5,
     height: '100%',
+  },
+  buttonAttack: {
+    justifyContent: 'center',
+    borderRadius: 5,
+    backgroundColor: 'pink',
   },
   textButton: {
     color: '#333',
     paddingVertical: 4,
     paddingHorizontal: 8,
-    fontSize: 16,
+    fontSize: 18,
     fontFamily: 'Quote',
   },
   search: {
@@ -31,6 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#eaeaea',
     color: '#333',
     padding: 0,
+    fontSize: 18,
     flex: 1,
     marginRight: 10,
     borderRadius: 5,
@@ -52,7 +57,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Quote',
   },
   profile: {
-    flex: 1,
+    backgroundColor: '#f60',
+    alignItems: 'center',
+  },
+  choice: {
+    height: 34,
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-around',
   },
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Image, Pressable, Text, TextInput, View} from 'react-native';
+import {Alert, Image, Pressable, Text, TextInput, View} from 'react-native';
 import styles from '../styles/styles';
 import * as cheerio from 'cheerio';
 
@@ -58,14 +58,14 @@ class Search extends React.Component<Props, State> {
   render(): React.ReactNode {
     return (
       <View style={{flex: 1}}>
-        <View style={styles.profile}>
+        <View style={{flex: 1}}>
           {this.state.notFound && (
             <View style={{alignItems: 'center'}}>
               <Text style={styles.plainText}>name not found</Text>
             </View>
           )}
           {/* {this.state.data && ( */}
-          <View style={{alignItems: 'center'}}>
+          <View style={styles.profile}>
             <Image
               style={styles.avatar}
               // source={{uri: this.state.data.avatar}}
@@ -74,6 +74,29 @@ class Search extends React.Component<Props, State> {
               }}
             />
             <Text style={styles.plainText}>{'jksdh'}</Text>
+            <View style={styles.choice}>
+              <View>
+                <Pressable
+                  onPress={() => Alert.alert('hello')}
+                  style={styles.buttonAttack}>
+                  <Text style={styles.textButton}>Attack !</Text>
+                </Pressable>
+              </View>
+              <View>
+                <Pressable
+                  onPress={() => Alert.alert('hello')}
+                  style={styles.buttonAttack}>
+                  <Text style={styles.textButton}>Attack !</Text>
+                </Pressable>
+              </View>
+              <View>
+                <Pressable
+                  onPress={() => Alert.alert('hello')}
+                  style={styles.buttonAttack}>
+                  <Text style={styles.textButton}>Attack !</Text>
+                </Pressable>
+              </View>
+            </View>
           </View>
           {/* )} */}
         </View>
@@ -83,7 +106,7 @@ class Search extends React.Component<Props, State> {
             style={styles.input}
             placeholder="username instagram"
           />
-          <Pressable onPress={this.handleSearch} style={styles.button}>
+          <Pressable onPress={this.handleSearch} style={styles.buttonSearch}>
             <Text style={styles.textButton}>Search</Text>
           </Pressable>
         </View>
