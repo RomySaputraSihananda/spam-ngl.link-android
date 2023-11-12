@@ -6,8 +6,8 @@
  */
 
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import Search from './components/Seacrh';
+import {View} from 'react-native';
+import Search from './views/Seacrh';
 import styles from './styles/styles';
 
 class App extends React.Component {

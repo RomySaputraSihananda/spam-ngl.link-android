@@ -57,7 +57,7 @@ class Search extends React.Component<Props, State> {
 
   render(): React.ReactNode {
     return (
-      <View style={{height: '100%', width: '100%'}}>
+      <View style={{flex: 1}}>
         <View style={styles.profile}>
           {this.state.notFound && (
             <View style={{alignItems: 'center'}}>

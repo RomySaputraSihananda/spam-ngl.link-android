@@ -2,18 +2,16 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   body: {
-    // display: 'flex',
+    flex: 1,
     backgroundColor: '#333',
-    height: '100%',
-    width: '100%',
     fontFamily: 'Quote',
-    // justifyContent: 'center',
     padding: 10,
   },
   button: {
     backgroundColor: '#eaeaea',
     alignSelf: 'center',
     borderRadius: 3,
+    height: '100%',
   },
   textButton: {
     color: '#333',
@@ -26,6 +24,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    height: 50,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
   },
   input: {
     backgroundColor: '#eaeaea',
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     paddingVertical: 4,
     paddingHorizontal: 8,
+    height: '100%',
   },
   avatar: {
     width: 200,
@@ -49,8 +51,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   profile: {
-    height: '50%',
-    width: '100%',
+    flex: 1,
   },
 });
 
