@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, FlatList, StyleSheet} from 'react-native';
-// > send random message to @${username} status => ${status}
+
 interface Log {
   id: number;
-  log: string;
   status: boolean;
 }
 
@@ -20,12 +19,10 @@ class Logger extends Component<{}, LogState> {
       logs: [
         {
           id: 99,
-          log: ` send random message to @${'username'}`,
           status: true,
         },
         {
           id: 98,
-          log: ` send random message to @${'username'}`,
           status: false,
         },
       ],
@@ -33,24 +30,21 @@ class Logger extends Component<{}, LogState> {
     this.flatListRef = React.createRef();
   }
 
-  // componentDidMount(): void {
-  //   let i: number = 1;
-  //   setInterval(() => {
-  //     this.setState(
-  //       prevState => ({
-  //         logs: [
-  //           ...prevState.logs,
-  //           {id: i, log: `$ [success] send random message to @${'username'}`},
-  //         ],
-  //       }),
-  //       () => {
-  //         console.log(this.state.logs);
-  //         this.scrollToEnd();
-  //       },
-  //     );
-  //     i++;
-  //   }, 1000);
-  // }
+  componentDidMount(): void {
+    const {logs}: LogState = this.state;
+    let i: number = 1;
+    setInterval(async () => {
+      // const data: {} = await spam(props.username);S
+      this.setState(
+        prevState => ({logs: [...logs, {id: logs.length + 1, status: true}]}),
+        () => {
+          console.log(this.state.logs);
+          this.scrollToEnd();
+        },
+      );
+      i++;
+    }, 1000);
+  }
 
   scrollToEnd = () => {
     if (this.flatListRef.current) {
@@ -76,7 +70,7 @@ class Logger extends Component<{}, LogState> {
                   style={item.status ? styles.successText : styles.failedText}>
                   {item.status ? ' [succes] ' : ' [failed] '}
                 </Text>
-                {item.log}
+                {`send random message to @${'username'}`}
               </Text>
             </View>
           )}
