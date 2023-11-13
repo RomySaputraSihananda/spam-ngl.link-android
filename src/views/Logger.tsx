@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, FlatList, StyleSheet} from 'react-native';
-
+import Spammer from './../utils/index';
 interface Log {
   id: number;
   status: boolean;
@@ -10,10 +10,14 @@ interface LogState {
   logs: Log[];
 }
 
-class Logger extends Component<{}, LogState> {
+interface Props {
+  username: string;
+}
+
+class Logger extends Component<Props, LogState> {
   flatListRef: React.RefObject<FlatList<Log>>;
 
-  constructor(props: {}) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       logs: [
@@ -33,17 +37,18 @@ class Logger extends Component<{}, LogState> {
   componentDidMount(): void {
     const {logs}: LogState = this.state;
     let i: number = 1;
-    setInterval(async () => {
-      // const data: {} = await spam(props.username);S
-      this.setState(
-        prevState => ({logs: [...logs, {id: logs.length + 1, status: true}]}),
-        () => {
-          console.log(this.state.logs);
-          this.scrollToEnd();
-        },
-      );
-      i++;
-    }, 1000);
+    console.log(this.props.username);
+    // setInterval(async () => {
+    //   // const data: {} = await spam(props.username);S
+    //   this.setState(
+    //     prevState => ({logs: [...logs, {id: logs.length + 1, status: true}]}),
+    //     () => {
+    //       console.log(this.state.logs);
+    //       this.scrollToEnd();
+    //     },
+    //   );
+    //   i++;
+    // }, 1000);
   }
 
   scrollToEnd = () => {

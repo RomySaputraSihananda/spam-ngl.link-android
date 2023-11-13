@@ -12,10 +12,8 @@ interface State {
   notFound: boolean;
 }
 
-interface Props {}
-
-class Search extends React.Component<Props, State> {
-  constructor(props: Props) {
+class Search extends React.Component<{}, State> {
+  constructor(props: {}) {
     super(props);
     this.state = {
       username: '',
