@@ -15,7 +15,15 @@ const styles = StyleSheet.create({
   buttonAttack: {
     justifyContent: 'center',
     borderRadius: 5,
-    backgroundColor: 'pink',
+    borderWidth: 1,
+    borderColor: '#eaeaea',
+  },
+  textButtonAttack: {
+    color: '#eaeaea',
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    fontSize: 18,
+    fontFamily: 'Quote',
   },
   textButton: {
     color: '#333',
@@ -50,16 +58,18 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 100,
     resizeMode: 'contain',
+    borderWidth: 1,
+    borderColor: '#eaeaea',
   },
   plainText: {
     color: '#eaeaea',
     fontSize: 24,
-    padding: 10,
+    padding: 18,
     fontFamily: 'Quote',
   },
   profile: {
-    backgroundColor: '#f60',
     alignItems: 'center',
+    marginTop: 50,
   },
   choice: {
     height: 34,

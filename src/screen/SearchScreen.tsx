@@ -2,6 +2,7 @@ import React from 'react';
 import {Alert, Image, Pressable, Text, TextInput, View} from 'react-native';
 import styles from '../styles/styles';
 import * as cheerio from 'cheerio';
+import {NavigationProp} from '@react-navigation/native';
 
 interface State {
   username: string;
@@ -12,8 +13,12 @@ interface State {
   notFound: boolean;
 }
 
-class SearchScreen extends React.Component<{}, State> {
-  constructor(props: {}) {
+interface Props {
+  navigation: NavigationProp<any>;
+}
+
+class SearchScreen extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       username: '',
@@ -54,6 +59,7 @@ class SearchScreen extends React.Component<{}, State> {
   };
 
   render(): React.ReactNode {
+    const {navigation} = this.props;
     return (
       <View style={styles.body}>
         <View style={{flex: 1}}>
@@ -76,23 +82,9 @@ class SearchScreen extends React.Component<{}, State> {
               <View style={styles.choice}>
                 <View>
                   <Pressable
-                    onPress={() => Alert.alert('hello')}
+                    onPress={() => navigation.navigate('Logger', this.state)}
                     style={styles.buttonAttack}>
-                    <Text style={styles.textButton}>Attack !</Text>
-                  </Pressable>
-                </View>
-                <View>
-                  <Pressable
-                    onPress={() => Alert.alert('hello')}
-                    style={styles.buttonAttack}>
-                    <Text style={styles.textButton}>Attack !</Text>
-                  </Pressable>
-                </View>
-                <View>
-                  <Pressable
-                    onPress={() => Alert.alert('hello')}
-                    style={styles.buttonAttack}>
-                    <Text style={styles.textButton}>Attack !</Text>
+                    <Text style={styles.textButtonAttack}>Attack !</Text>
                   </Pressable>
                 </View>
               </View>

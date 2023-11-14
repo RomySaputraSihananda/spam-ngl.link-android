@@ -11,17 +11,21 @@ import styles from './styles/styles';
 import {HomeScreen, LoggerScreen, SearchScreen} from './screen';
 
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {
+  StackNavigationOptions,
+  createStackNavigator,
+} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
-const options: {} = {
+const options: StackNavigationOptions = {
   headerStyle: {
     backgroundColor: '#1F2A3E',
   },
   headerTintColor: '#eaeaea',
   headerTitleStyle: {
     fontFamily: 'Quote',
+    letterSpacing: 2,
   },
 };
 class App extends React.Component {

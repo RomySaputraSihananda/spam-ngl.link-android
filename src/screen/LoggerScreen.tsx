@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, FlatList, StyleSheet} from 'react-native';
 import Spammer from '../utils/index';
+import {RouteProp} from '@react-navigation/native';
 interface Log {
   id: number;
   status: boolean;
@@ -10,8 +11,15 @@ interface LogState {
   logs: Log[];
 }
 
+interface Data {
+  data: {
+    username: string;
+    avatar: string;
+  };
+}
+
 interface Props {
-  username: string;
+  route: RouteProp<{Logger: {data: Data}}, 'Logger'>;
 }
 
 class LoggerScreen extends Component<Props, LogState> {
@@ -37,7 +45,7 @@ class LoggerScreen extends Component<Props, LogState> {
   componentDidMount(): void {
     const {logs}: LogState = this.state;
     let i: number = 1;
-    console.log(this.props.username);
+    // console.log(this.props.username);
     // setInterval(async () => {
     //   // const data: {} = await spam(props.username);S
     //   this.setState(
@@ -61,25 +69,29 @@ class LoggerScreen extends Component<Props, LogState> {
     const {logs} = this.state;
 
     return (
-      <View style={styles.container}>
-        <Text style={{color: '#0CF167'}}>follow my github</Text>
-        <FlatList
-          data={logs}
-          ref={this.flatListRef}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({item}) => (
-            <View>
-              <Text style={styles.logText}>
-                ${' '}
-                <Text
-                  style={item.status ? styles.successText : styles.failedText}>
-                  {item.status ? ' [succes] ' : ' [failed] '}
+      <View style={{flex: 1, backgroundColor: '#1F2A3E', padding: 10}}>
+        <View style={styles.container}>
+          <Text style={{color: '#0CF167'}}>follow my github</Text>
+          <FlatList
+            data={logs}
+            ref={this.flatListRef}
+            keyExtractor={item => item.id.toString()}
+            renderItem={({item}) => (
+              <View>
+                <Text style={styles.logText}>
+                  ${' '}
+                  <Text
+                    style={
+                      item.status ? styles.successText : styles.failedText
+                    }>
+                    {item.status ? ' [succes] ' : ' [failed] '}
+                  </Text>
+                  {`send random message to @${'username'}`}
                 </Text>
-                {`send random message to @${'username'}`}
-              </Text>
-            </View>
-          )}
-        />
+              </View>
+            )}
+          />
+        </View>
       </View>
     );
   }
@@ -88,7 +100,6 @@ class LoggerScreen extends Component<Props, LogState> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 10,
   },
   title: {
     fontSize: 24,
