@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // backgroundColor: '#333',
     backgroundColor: '#1F2A3E',
-    padding: 10,
+    // padding: 10,
   },
   buttonSearch: {
     justifyContent: 'center',
