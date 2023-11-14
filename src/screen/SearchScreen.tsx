@@ -69,27 +69,28 @@ class SearchScreen extends React.Component<Props, State> {
                 <Text style={styles.plainText}>name not found</Text>
               </View>
             )}
-            {/* {this.state.data && ( */}
-            <View style={styles.profile}>
-              <Image
-                style={styles.avatar}
-                // source={{uri: this.state.data.avatar}}
-                source={{
-                  uri: 'https://firebasestorage.googleapis.com/v0/b/ask-fun-d10f0.appspot.com/o/images%2F3hbs59j5pEZCmENcMw4Fe3GDKuf2.jpg?alt=media&token=a5f0e868-cb30-48d9-b2a5-1739bf7559d0',
-                }}
-              />
-              <Text style={styles.plainText}>{'jksdh'}</Text>
-              <View style={styles.choice}>
-                <View>
-                  <Pressable
-                    onPress={() => navigation.navigate('Logger', this.state)}
-                    style={styles.buttonAttack}>
-                    <Text style={styles.textButtonAttack}>Attack !</Text>
-                  </Pressable>
+            {this.state.data && (
+              <View style={styles.profile}>
+                <Image
+                  style={styles.avatar}
+                  source={{uri: this.state.data.avatar}}
+                />
+                <Text style={styles.plainText}>{this.state.data.username}</Text>
+                <View style={styles.choice}>
+                  <View>
+                    <Pressable
+                      onPress={() =>
+                        navigation.navigate('Logger', {
+                          data: this.state.data,
+                        })
+                      }
+                      style={styles.buttonAttack}>
+                      <Text style={styles.textButtonAttack}>Attack !</Text>
+                    </Pressable>
+                  </View>
                 </View>
               </View>
-            </View>
-            {/* )} */}
+            )}
           </View>
           <View style={styles.search}>
             <TextInput

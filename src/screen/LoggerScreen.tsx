@@ -7,56 +7,51 @@ interface Log {
   status: boolean;
 }
 
-interface LogState {
+interface State {
+  username: string;
   logs: Log[];
 }
 
 interface Data {
-  data: {
-    username: string;
-    avatar: string;
-  };
+  username: string;
+  avatar: string;
 }
 
 interface Props {
   route: RouteProp<{Logger: {data: Data}}, 'Logger'>;
 }
 
-class LoggerScreen extends Component<Props, LogState> {
+class LoggerScreen extends Component<Props, State> {
   flatListRef: React.RefObject<FlatList<Log>>;
 
   constructor(props: Props) {
     super(props);
     this.state = {
-      logs: [
-        {
-          id: 99,
-          status: true,
-        },
-        {
-          id: 98,
-          status: false,
-        },
-      ],
+      logs: [],
+      username: props.route.params.data.username,
     };
     this.flatListRef = React.createRef();
   }
 
   componentDidMount(): void {
-    const {logs}: LogState = this.state;
     let i: number = 1;
-    // console.log(this.props.username);
-    // setInterval(async () => {
-    //   // const data: {} = await spam(props.username);S
-    //   this.setState(
-    //     prevState => ({logs: [...logs, {id: logs.length + 1, status: true}]}),
-    //     () => {
-    //       console.log(this.state.logs);
-    //       this.scrollToEnd();
-    //     },
-    //   );
-    //   i++;
-    // }, 1000);
+    const loop = setInterval(async () => {
+      const {logs, username}: State = this.state;
+
+      const status: boolean = await Spammer(username);
+
+      this.setState(
+        prevState => ({logs: [...logs, {id: logs.length + 1, status}]}),
+        () => {
+          console.log(this.state.logs);
+          this.scrollToEnd();
+        },
+      );
+
+      if (i === 10) clearInterval(loop);
+
+      i++;
+    }, 1000);
   }
 
   scrollToEnd = () => {
@@ -66,7 +61,7 @@ class LoggerScreen extends Component<Props, LogState> {
   };
 
   render() {
-    const {logs} = this.state;
+    const {logs, username} = this.state;
 
     return (
       <View style={{flex: 1, backgroundColor: '#1F2A3E', padding: 10}}>
@@ -86,7 +81,7 @@ class LoggerScreen extends Component<Props, LogState> {
                     }>
                     {item.status ? ' [succes] ' : ' [failed] '}
                   </Text>
-                  {`send random message to @${'username'}`}
+                  {` send random message to @${username}`}
                 </Text>
               </View>
             )}
